@@ -20,7 +20,7 @@ class GetStartedScreen extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: Text(
             "Your Personal Finance Buddy: Simplifying Money Management using AI",
-            style: CustomTextStyle.subHeading.style,
+            style: CustomTextStyle.subText.style,
             textAlign: TextAlign.center,
           ),
         ),

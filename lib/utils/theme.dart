@@ -4,8 +4,12 @@ import 'package:google_fonts/google_fonts.dart';
 final ThemeData appTheme = ThemeData(
   scaffoldBackgroundColor: Colors.white,
   textTheme: GoogleFonts.latoTextTheme(),
-  appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
   drawerTheme: const DrawerThemeData(backgroundColor: Colors.white),
+  inputDecorationTheme: const InputDecorationTheme(border: InputBorder.none),
+  appBarTheme: const AppBarTheme(
+    backgroundColor: Colors.white,
+    scrolledUnderElevation: 0,
+  ),
   textButtonTheme: TextButtonThemeData(
     style: ButtonStyle(
       foregroundColor: const WidgetStatePropertyAll(Colors.black),

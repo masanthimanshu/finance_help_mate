@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-enum CustomTextStyle { heading, subHeading }
+enum CustomTextStyle { heading, mediumHeading, subText }
 
 extension CustomTextStyleExtension on CustomTextStyle {
   TextStyle get style {
@@ -9,7 +9,10 @@ extension CustomTextStyleExtension on CustomTextStyle {
       case CustomTextStyle.heading:
         return GoogleFonts.lora(fontSize: 32, fontWeight: FontWeight.bold);
 
-      case CustomTextStyle.subHeading:
+      case CustomTextStyle.mediumHeading:
+        return GoogleFonts.lora(fontSize: 28, fontWeight: FontWeight.bold);
+
+      case CustomTextStyle.subText:
         return const TextStyle(fontSize: 18);
     }
   }
