@@ -9,6 +9,7 @@ final ThemeData appTheme = ThemeData(
   appBarTheme: const AppBarTheme(
     backgroundColor: Colors.white,
     scrolledUnderElevation: 0,
+    centerTitle: true,
   ),
   textButtonTheme: TextButtonThemeData(
     style: ButtonStyle(
@@ -28,5 +29,9 @@ final ThemeData appTheme = ThemeData(
         borderRadius: BorderRadius.circular(10),
       )),
     ),
+  ),
+  floatingActionButtonTheme: const FloatingActionButtonThemeData(
+    backgroundColor: Colors.black,
+    foregroundColor: Colors.white,
   ),
 );

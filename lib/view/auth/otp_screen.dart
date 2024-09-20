@@ -1,4 +1,5 @@
 import 'package:finance_help_mate/components/auth_wrapper.dart';
+import 'package:finance_help_mate/style/otp_field_style.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
@@ -22,17 +23,9 @@ class _OtpScreenState extends State<OtpScreen> {
         length: 6,
         autoFocus: true,
         appContext: context,
-        pinTheme: _otpTheme,
+        pinTheme: otpFieldStyle,
         keyboardType: TextInputType.number,
       ),
     );
   }
 }
-
-final _otpTheme = PinTheme(
-  activeColor: Colors.black,
-  selectedColor: Colors.grey,
-  inactiveColor: Colors.black,
-  shape: PinCodeFieldShape.box,
-  borderRadius: BorderRadius.circular(5),
-);
