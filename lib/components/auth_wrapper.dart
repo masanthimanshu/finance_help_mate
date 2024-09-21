@@ -32,7 +32,7 @@ class AuthWrapper extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title, style: CustomTextStyle.mediumHeading.style),
+                Text(title, style: CustomTextStyle.largeHeading.style),
                 const SizedBox(height: 10),
                 Text(subTitle, style: CustomTextStyle.subText.style),
                 const SizedBox(height: 30),
