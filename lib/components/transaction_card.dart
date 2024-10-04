@@ -10,26 +10,31 @@ class TransactionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 25),
+      margin: const EdgeInsets.only(bottom: 20),
       decoration: BoxDecoration(
         border: Border.all(width: 1),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Container(
-          color: Colors.black,
           width: double.infinity,
+          decoration: BoxDecoration(
+            color: Colors.black,
+            borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+          ),
           padding: const EdgeInsets.all(10),
           child: Text("Expense", style: CustomTextStyle.whiteSubText.style),
         ),
+        SizedBox(height: 10),
         Padding(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Text(
             "Lunch from zomato 200",
             style: CustomTextStyle.extraSmallHeading.style,
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -39,7 +44,7 @@ class TransactionCard extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(15),
           child: DottedBorder(
             strokeWidth: 1,
             dashPattern: const [10, 5, 10, 5],
@@ -67,7 +72,6 @@ class TransactionCard extends StatelessWidget {
             ]),
           ),
         ),
-        const SizedBox(height: 5),
         Padding(
           padding: const EdgeInsets.only(right: 20),
           child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
@@ -84,7 +88,7 @@ class TransactionCard extends StatelessWidget {
             ),
           ]),
         ),
-        const SizedBox(height: 15),
+        const SizedBox(height: 5),
       ]),
     );
   }

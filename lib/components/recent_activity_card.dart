@@ -8,11 +8,11 @@ class RecentActivityCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10),
-      margin: const EdgeInsets.only(bottom: 15),
+      padding: const EdgeInsets.all(15),
+      margin: const EdgeInsets.only(bottom: 20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        border: Border.all(width: 2, color: Colors.grey.shade200),
+        border: Border.all(width: 1, color: Colors.grey),
       ),
       child: Row(children: [
         Container(
@@ -27,10 +27,13 @@ class RecentActivityCard extends StatelessWidget {
             size: 15,
           ),
         ),
-        const SizedBox(width: 10),
+        const SizedBox(width: 20),
         Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text("Income", style: CustomTextStyle.extraSmallHeading.style),
-          Text("Salary Received", style: CustomTextStyle.subText.style),
+          Text(
+            "Salary Received - ₹ 10,000",
+            style: CustomTextStyle.subText.style,
+          ),
         ]),
         const Spacer(),
         const Icon(Icons.arrow_forward_ios),

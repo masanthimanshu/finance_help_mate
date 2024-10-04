@@ -8,6 +8,6 @@ const filledIconButton = ButtonStyle(
 
 const outlinedIconButton = ButtonStyle(
   shape: WidgetStatePropertyAll(CircleBorder(
-    side: BorderSide(width: 2),
+    side: BorderSide(width: 2, color: Colors.grey),
   )),
 );

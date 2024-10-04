@@ -21,7 +21,7 @@ class AddTransaction extends StatelessWidget {
           TextField(
             decoration: InputDecoration(
               prefixIcon: const Icon(Icons.tag),
-              hintText: "Lunch from zomato 200",
+              hintText: "Lunch from zomato 350",
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(50),
               ),
