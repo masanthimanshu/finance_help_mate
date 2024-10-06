@@ -1,11 +1,14 @@
 import 'package:dotted_border/dotted_border.dart';
+import 'package:finance_help_mate/model/chat_model.dart';
 import 'package:finance_help_mate/style/icon_button_style.dart';
 import 'package:finance_help_mate/style/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class TransactionCard extends StatelessWidget {
-  const TransactionCard({super.key});
+class ChatCard extends StatelessWidget {
+  const ChatCard({super.key, required this.data});
+
+  final ChatModel data;
 
   @override
   Widget build(BuildContext context) {
@@ -23,23 +26,27 @@ class TransactionCard extends StatelessWidget {
             borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
           ),
           padding: const EdgeInsets.all(10),
-          child: Text("Expense", style: CustomTextStyle.whiteSubText.style),
+          child: Text(data.category, style: CustomTextStyle.whiteSubText.style),
         ),
         SizedBox(height: 10),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Text(
-            "Lunch from zomato 200",
+            data.input,
             style: CustomTextStyle.extraSmallHeading.style,
           ),
         ),
+        SizedBox(height: 5),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("22 Sept 2024", style: CustomTextStyle.graySubText.style),
-              Text("₹ 215", style: CustomTextStyle.boldSubText.style),
+              Text(data.date, style: CustomTextStyle.graySubText.style),
+              Text(
+                "₹ ${data.amount}",
+                style: CustomTextStyle.boldSubText.style,
+              ),
             ],
           ),
         ),
@@ -63,12 +70,9 @@ class TransactionCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 10),
-              Text("Expense", style: CustomTextStyle.boldSubText.style),
+              Text(data.category, style: CustomTextStyle.boldSubText.style),
               const Spacer(),
-              Text(
-                "Eating Out / Ordering In",
-                style: CustomTextStyle.graySubText.style,
-              ),
+              Text(data.subCategory, style: CustomTextStyle.graySubText.style),
             ]),
           ),
         ),
@@ -88,7 +92,7 @@ class TransactionCard extends StatelessWidget {
             ),
           ]),
         ),
-        const SizedBox(height: 5),
+        const SizedBox(height: 10),
       ]),
     );
   }

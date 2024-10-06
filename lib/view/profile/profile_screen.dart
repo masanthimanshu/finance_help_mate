@@ -1,3 +1,4 @@
+import 'package:finance_help_mate/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -12,7 +13,7 @@ class ProfileScreen extends StatelessWidget {
           width: double.infinity,
           padding: EdgeInsets.all(25),
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () => AuthController().logout(context),
             child: const Text("Logout"),
           ),
         ),

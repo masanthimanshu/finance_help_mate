@@ -1,15 +1,15 @@
+import 'package:finance_help_mate/root/custom_root.dart';
 import 'package:flutter/material.dart';
 
-import '/view/add_transaction/add_transaction.dart';
 import '/view/auth/phone_screen.dart';
-import '/view/get_started/get_started_screen.dart';
+import '/view/chat/chat_screen.dart';
 import '/view/home/home_screen.dart';
 import '/view/profile/profile_screen.dart';
 
 final Map<String, WidgetBuilder> appRoutes = {
+  "/": (e) => const CustomRoot(),
   "/home": (e) => const HomeScreen(),
   "/auth": (e) => const PhoneScreen(),
-  "/": (e) => const GetStartedScreen(),
   "/profile": (e) => const ProfileScreen(),
-  "/add-transaction": (e) => const AddTransaction(),
+  "/add-transaction": (e) => const ChatScreen(),
 };

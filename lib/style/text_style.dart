@@ -11,6 +11,7 @@ enum CustomTextStyle {
   largeHeading,
   mediumHeading,
   extraSmallHeading,
+  grayItalicHeading,
 }
 
 extension CustomTextStyleExtension on CustomTextStyle {
@@ -50,6 +51,14 @@ extension CustomTextStyleExtension on CustomTextStyle {
 
       case CustomTextStyle.extraSmallHeading:
         return GoogleFonts.lora(fontSize: 16, fontWeight: FontWeight.bold);
+
+      case CustomTextStyle.grayItalicHeading:
+        return GoogleFonts.lora(
+          fontSize: 16,
+          color: Colors.grey,
+          fontStyle: FontStyle.italic,
+          fontWeight: FontWeight.bold,
+        );
     }
   }
 }

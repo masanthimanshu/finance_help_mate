@@ -1,15 +1,18 @@
+import 'package:finance_help_mate/model/chat_model.dart';
 import 'package:finance_help_mate/style/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class RecentActivityCard extends StatelessWidget {
-  const RecentActivityCard({super.key});
+  const RecentActivityCard({super.key, required this.data});
+
+  final ChatModel data;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(15),
       margin: const EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         border: Border.all(width: 1, color: Colors.grey),
@@ -21,18 +24,22 @@ class RecentActivityCard extends StatelessWidget {
             color: Colors.black,
             shape: BoxShape.circle,
           ),
-          child: const FaIcon(
-            FontAwesomeIcons.landmark,
-            color: Colors.white,
-            size: 15,
-          ),
+          child: const FaIcon(FontAwesomeIcons.landmark, color: Colors.white),
         ),
         const SizedBox(width: 20),
         Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text("Income", style: CustomTextStyle.extraSmallHeading.style),
           Text(
-            "Salary Received - ₹ 10,000",
-            style: CustomTextStyle.subText.style,
+            "⭐ ${data.category}",
+            style: CustomTextStyle.extraSmallHeading.style,
+          ),
+          Text(
+            "--> ${data.subCategory}",
+            style: CustomTextStyle.grayItalicHeading.style,
+          ),
+          SizedBox(height: 10),
+          Text(
+            "${data.date} - ₹ ${data.amount}",
+            style: CustomTextStyle.graySubText.style,
           ),
         ]),
         const Spacer(),
