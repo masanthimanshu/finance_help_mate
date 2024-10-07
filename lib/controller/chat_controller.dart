@@ -18,4 +18,8 @@ class ChatController extends StateNotifier<List<ChatModel>?> with HTTPRequests {
   Future<void> addChat(Map<String, dynamic> data) async {
     await postRequest(url: apiEndpoint(ApiEndpoints.addChat), payload: data);
   }
+
+  Future<void> deleteChat(String chatId) async {
+    await deleteRequest(apiEndpoint(ApiEndpoints.deleteChat) + chatId);
+  }
 }

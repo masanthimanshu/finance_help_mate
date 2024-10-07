@@ -5,6 +5,8 @@ enum ApiEndpoints {
   sendOtp,
   limitChat,
   verifyOtp,
+  deleteChat,
+  totalAmount,
   verifyToken,
   refreshToken,
 }
@@ -28,6 +30,12 @@ String apiEndpoint(ApiEndpoints endpoint) {
 
     case ApiEndpoints.verifyOtp:
       return "account/auth/verify-phone";
+
+    case ApiEndpoints.deleteChat:
+      return "secure/chat/delete-chat?chatId=";
+
+    case ApiEndpoints.totalAmount:
+      return "secure/chat/total-amount";
 
     case ApiEndpoints.verifyToken:
       return "secure/verify";

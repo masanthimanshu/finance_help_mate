@@ -59,4 +59,22 @@ mixin HTTPRequests {
       return null;
     }
   }
+
+  @protected
+  Future<Map<String, dynamic>?> deleteRequest(String url) async {
+    debugPrint("url : $url");
+
+    try {
+      final res = await _dioHandler.delete(url);
+      if (res.statusCode! >= 200 && res.statusCode! <= 208) {
+        return res.data;
+      } else {
+        debugPrint("Request failed with status code: ${res.statusCode}");
+        return null;
+      }
+    } catch (e) {
+      debugPrint("Error during DELETE request: $e");
+      return null;
+    }
+  }
 }

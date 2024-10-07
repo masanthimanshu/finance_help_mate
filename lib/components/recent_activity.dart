@@ -1,7 +1,7 @@
 import 'package:finance_help_mate/model/chat_model.dart';
+import 'package:finance_help_mate/provider/icon_provider.dart';
 import 'package:finance_help_mate/style/text_style.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class RecentActivityCard extends StatelessWidget {
   const RecentActivityCard({super.key, required this.data});
@@ -24,19 +24,16 @@ class RecentActivityCard extends StatelessWidget {
             color: Colors.black,
             shape: BoxShape.circle,
           ),
-          child: const FaIcon(FontAwesomeIcons.landmark, color: Colors.white),
+          child: iconProvider(data.category),
         ),
         const SizedBox(width: 20),
         Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text(data.category, style: CustomTextStyle.extraSmallHeading.style),
           Text(
-            "⭐ ${data.category}",
-            style: CustomTextStyle.extraSmallHeading.style,
-          ),
-          Text(
-            "--> ${data.subCategory}",
+            "- ${data.subCategory}",
             style: CustomTextStyle.grayItalicHeading.style,
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 5),
           Text(
             "${data.date} - ₹ ${data.amount}",
             style: CustomTextStyle.graySubText.style,
