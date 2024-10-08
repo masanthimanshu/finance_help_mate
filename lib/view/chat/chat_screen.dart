@@ -25,12 +25,6 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    ref.read(allChatProvider.notifier).getChat();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final res = ref.watch(allChatProvider);
 
@@ -39,7 +33,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(children: [
-          res!.isNotEmpty
+          res.isNotEmpty
               ? Expanded(
                   child: ListView.builder(
                     reverse: true,

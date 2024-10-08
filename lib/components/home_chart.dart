@@ -1,6 +1,6 @@
-import 'package:finance_help_mate/controller/home_controller.dart';
 import 'package:finance_help_mate/extras/chart_color.dart';
 import 'package:finance_help_mate/model/chart_model.dart';
+import 'package:finance_help_mate/provider/chart_data_provider.dart';
 import 'package:finance_help_mate/style/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -11,14 +11,14 @@ class HomeChart extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final res = ref.watch(totalAmountProvider);
+    final res = ref.watch(chartDataProvider);
 
-    if (!res.hasValue || res.value!.isEmpty) return SizedBox();
+    if (res.isEmpty) return SizedBox();
 
     return Column(children: [
       SfCircularChart(series: [
         RadialBarSeries<ChartModel, String>(
-          dataSource: res.value,
+          dataSource: res,
           cornerStyle: CornerStyle.bothCurve,
           yValueMapper: (data, _) => data.total,
           xValueMapper: (data, _) => data.category,
@@ -27,7 +27,7 @@ class HomeChart extends ConsumerWidget {
       ]),
       SizedBox(height: 25),
       GridView.builder(
-        itemCount: categories.length,
+        itemCount: allCategories.length,
         shrinkWrap: true,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
@@ -39,11 +39,11 @@ class HomeChart extends ConsumerWidget {
             Container(
               width: 25,
               height: 25,
-              color: chartColor(categories[index]),
+              color: chartColor(allCategories[index]),
             ),
             SizedBox(width: 10),
             Text(
-              categories[index],
+              allCategories[index],
               style: CustomTextStyle.boldSubText.style,
             ),
           ]);
@@ -53,9 +53,9 @@ class HomeChart extends ConsumerWidget {
   }
 }
 
-const List<String> categories = [
+const List<String> allCategories = [
   "Income",
   "Expense",
   "Savings",
-  "Investment",
+  "Investment"
 ];

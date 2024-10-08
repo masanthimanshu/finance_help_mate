@@ -3,11 +3,11 @@ import 'package:finance_help_mate/network/endpoints.dart';
 import 'package:finance_help_mate/network/requests.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final allChatProvider = StateNotifierProvider<_AllChat, List<ChatModel>?>(
+final allChatProvider = StateNotifierProvider<_AllChat, List<ChatModel>>(
   (ref) => _AllChat(),
 );
 
-class _AllChat extends StateNotifier<List<ChatModel>?> with HTTPRequests {
+class _AllChat extends StateNotifier<List<ChatModel>> with HTTPRequests {
   _AllChat() : super([]);
 
   void getChat() async {

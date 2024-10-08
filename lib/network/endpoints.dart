@@ -3,7 +3,6 @@ enum ApiEndpoints {
   baseUrl,
   getChat,
   sendOtp,
-  limitChat,
   verifyOtp,
   deleteChat,
   totalAmount,
@@ -24,9 +23,6 @@ String apiEndpoint(ApiEndpoints endpoint) {
 
     case ApiEndpoints.sendOtp:
       return "account/auth/phone";
-
-    case ApiEndpoints.limitChat:
-      return "secure/chat/limit-chat?limit=6";
 
     case ApiEndpoints.verifyOtp:
       return "account/auth/verify-phone";
