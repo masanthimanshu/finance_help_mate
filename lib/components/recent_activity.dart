@@ -1,5 +1,5 @@
+import 'package:finance_help_mate/extras/chat_icon.dart';
 import 'package:finance_help_mate/model/chat_model.dart';
-import 'package:finance_help_mate/provider/icon_provider.dart';
 import 'package:finance_help_mate/style/text_style.dart';
 import 'package:flutter/material.dart';
 
@@ -24,9 +24,9 @@ class RecentActivityCard extends StatelessWidget {
             color: Colors.black,
             shape: BoxShape.circle,
           ),
-          child: iconProvider(data.category),
+          child: chatIcon(data.category),
         ),
-        const SizedBox(width: 20),
+        const SizedBox(width: 25),
         Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(data.category, style: CustomTextStyle.extraSmallHeading.style),
           Text(
@@ -39,8 +39,6 @@ class RecentActivityCard extends StatelessWidget {
             style: CustomTextStyle.graySubText.style,
           ),
         ]),
-        const Spacer(),
-        const Icon(Icons.arrow_forward_ios),
       ]),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:finance_help_mate/controller/home_controller.dart';
+import 'package:finance_help_mate/extras/chart_color.dart';
 import 'package:finance_help_mate/model/chart_model.dart';
-import 'package:finance_help_mate/provider/color_provider.dart';
 import 'package:finance_help_mate/style/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,7 +13,7 @@ class HomeChart extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final res = ref.watch(totalAmountProvider);
 
-    if (!res.hasValue) return SizedBox();
+    if (!res.hasValue || res.value!.isEmpty) return SizedBox();
 
     return Column(children: [
       SfCircularChart(series: [
@@ -22,7 +22,7 @@ class HomeChart extends ConsumerWidget {
           cornerStyle: CornerStyle.bothCurve,
           yValueMapper: (data, _) => data.total,
           xValueMapper: (data, _) => data.category,
-          pointColorMapper: (data, _) => categoryColor(data.category),
+          pointColorMapper: (data, _) => chartColor(data.category),
         ),
       ]),
       SizedBox(height: 25),
@@ -39,7 +39,7 @@ class HomeChart extends ConsumerWidget {
             Container(
               width: 25,
               height: 25,
-              color: categoryColor(categories[index]),
+              color: chartColor(categories[index]),
             ),
             SizedBox(width: 10),
             Text(

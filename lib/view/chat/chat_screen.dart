@@ -1,5 +1,6 @@
 import 'package:finance_help_mate/components/chat_card.dart';
 import 'package:finance_help_mate/controller/chat_controller.dart';
+import 'package:finance_help_mate/provider/all_chat_provider.dart';
 import 'package:finance_help_mate/style/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,18 +21,18 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
     _controller.clear();
 
     await ChatController().addChat({"input": val});
-    ref.read(chatProvider.notifier).getChat();
+    ref.read(allChatProvider.notifier).getChat();
   }
 
   @override
   void initState() {
     super.initState();
-    ref.read(chatProvider.notifier).getChat();
+    ref.read(allChatProvider.notifier).getChat();
   }
 
   @override
   Widget build(BuildContext context) {
-    final res = ref.watch(chatProvider);
+    final res = ref.watch(allChatProvider);
 
     return Scaffold(
       appBar: AppBar(title: const Text("Add Transaction")),

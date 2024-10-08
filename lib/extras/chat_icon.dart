@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-FaIcon? iconProvider(String val) {
+FaIcon? chatIcon(String val) {
   switch (val) {
     case "Income":
       return FaIcon(FontAwesomeIcons.landmark, color: Colors.white);

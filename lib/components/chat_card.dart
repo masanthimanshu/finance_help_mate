@@ -1,7 +1,8 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:finance_help_mate/controller/chat_controller.dart';
+import 'package:finance_help_mate/extras/chat_icon.dart';
 import 'package:finance_help_mate/model/chat_model.dart';
-import 'package:finance_help_mate/provider/icon_provider.dart';
+import 'package:finance_help_mate/provider/all_chat_provider.dart';
 import 'package:finance_help_mate/style/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -34,7 +35,7 @@ class ChatCard extends ConsumerWidget {
               GestureDetector(
                 onTap: () {
                   ChatController().deleteChat(data.id);
-                  ref.read(chatProvider.notifier).getChat();
+                  ref.read(allChatProvider.notifier).getChat();
                 },
                 child: Icon(Icons.cancel_outlined, color: Colors.white),
               ),
@@ -70,7 +71,7 @@ class ChatCard extends ConsumerWidget {
                       color: Colors.grey,
                       shape: BoxShape.circle,
                     ),
-                    child: iconProvider(data.category),
+                    child: chatIcon(data.category),
                   ),
                   const SizedBox(width: 10),
                   Text(data.category, style: CustomTextStyle.boldSubText.style),

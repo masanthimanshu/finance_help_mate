@@ -1,18 +1,29 @@
 import 'package:finance_help_mate/components/home_chart.dart';
 import 'package:finance_help_mate/components/recent_activity.dart';
 import 'package:finance_help_mate/controller/auth_controller.dart';
-import 'package:finance_help_mate/controller/home_controller.dart';
+import 'package:finance_help_mate/provider/limit_chat_provider.dart';
 import 'package:finance_help_mate/style/icon_button_style.dart';
 import 'package:finance_help_mate/style/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomeScreen extends ConsumerWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final res = ref.watch(recentActivityProvider);
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends ConsumerState<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    ref.read(limitChatProvider.notifier).limitChat();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final res = ref.watch(limitChatProvider);
 
     return Scaffold(
       appBar: AppBar(title: Text("Finance Help Mate"), actions: [
@@ -41,14 +52,12 @@ class HomeScreen extends ConsumerWidget {
         const SizedBox(height: 25),
         Divider(),
         const SizedBox(height: 25),
-        res.hasValue && res.value!.isNotEmpty
+        res!.isNotEmpty
             ? ListView.builder(
-                itemCount: res.value!.length,
+                itemCount: res.length,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (e, index) {
-                  return RecentActivityCard(data: res.value![index]);
-                },
+                itemBuilder: (e, index) => RecentActivityCard(data: res[index]),
               )
             : Container(
                 padding: EdgeInsets.only(top: 150),

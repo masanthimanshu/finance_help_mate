@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Color categoryColor(String val) {
+Color chartColor(String val) {
   switch (val) {
     case "Income":
       return Colors.deepPurpleAccent;
