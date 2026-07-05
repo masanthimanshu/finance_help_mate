@@ -2,51 +2,67 @@
 
 Purpose
 
-- Provide a minimal, actionable summary so coding agents are productive immediately.
+- Minimal, actionable guidance so coding agents are productive immediately.
 
-Quick commands
+Essential commands
 
 - Install deps: `flutter pub get`
 - Run app (device/emulator): `flutter run`
-- Run tests: `flutter test`
+- Analyze: `flutter analyze` or `dart analyze`
+- Tests: `flutter test`
 
 Project overview
 
-- Flutter app. Key entrypoint: `lib/main.dart`.
+- Flutter app. Key entrypoint: [lib/main.dart](lib/main.dart)
 - Important directories:
-  - `lib/` — app source
-  - `lib/controller/` — state/controllers
-  - `lib/view/` — UI screens
-  - `lib/provider/` — providers
-  - `lib/model/` — data models
-  - `android/`, `ios/` — platform projects
+  - [lib/](lib/) — app source (primary editing area)
+  - [lib/view/](lib/view/) — UI screens
+  - [lib/controller/](lib/controller/) — controllers / business logic
+  - [lib/provider/](lib/provider/) — providers / state wiring
+  - [lib/model/](lib/model/) — data models
+  - [lib/network/](lib/network/) — API endpoints and HTTP logic
+  - `android/`, `ios/` — platform projects (treat as platform/generated files)
 
 Conventions agents should follow
 
-- Preserve existing file structure and naming patterns.
-- Prefer small, focused edits and include tests when adding logic.
-- Link to docs instead of copying them. Use relative repo links.
+- Keep edits small and focused; prefer incremental PRs.
+- Always run `flutter analyze` and `flutter test` before proposing behavior changes.
+- Add unit tests for logic changes and widget tests for UI changes.
+- Link to existing docs instead of copying content.
+- Avoid modifying generated/platform files in `android/` and `ios/` unless required.
 
-What to look for first
+What to check first
 
-- Run `flutter analyze` and `flutter test` when adding behavior changes.
-- Inspect `lib/main.dart`, `pubspec.yaml`, and `lib/view/` to understand UI entry points.
+- Confirm dependencies in [pubspec.yaml](pubspec.yaml).
+- Inspect [lib/main.dart](lib/main.dart) for app startup and routing.
+- Review screens in [lib/view/](lib/view/) to understand UI flow.
+- Check for local state/storage side-effects (the app opens a Hive box named `myBox`).
 
-Common tasks agents can perform
+CI & automation notes
 
-- Add/modify widgets and helper functions under `lib/`.
-- Implement controller/provider logic in `lib/controller/` or `lib/provider/`.
-- Add unit/widget tests in `test/` corresponding to changes.
+- There are no workflows in `.github/workflows/` — consider adding a minimal CI that runs:
+  1. `flutter pub get`
+  2. `flutter analyze` / `dart analyze`
+  3. `flutter test`
+- Agents may propose a one-file GitHub Actions workflow (e.g., `.github/workflows/flutter-ci.yml`) that implements the above checks.
+
+Common agent tasks (safe to perform)
+
+- Implement or refactor widgets under [lib/](lib/).
+- Implement controller/provider logic and update corresponding tests.
+- Add/adjust routes in `lib/utils/routes.dart` and verify startup behavior.
+- Add/update unit/widget tests in `test/` and fix test expectations.
+- Suggest or add a CI workflow and basic lint/test fixes.
+
+What to avoid without reviewer approval
+
+- Large, cross-cutting refactors that change public APIs across many files.
+- Changing platform signing, native build configs, or generated Gradle/Xcode project files.
 
 Links
 
-- Repo README: [README.md](README.md)
+- README: [README.md](README.md)
 - Pubspec: [pubspec.yaml](pubspec.yaml)
 - App entry: [lib/main.dart](lib/main.dart)
 
-Suggested next customizations
-
-- Create a short `.github/copilot-instructions.md` focused on PR etiquette and testing expectations.
-- Add a `skills/` file for common Flutter tasks (format, test, build).
-
-Keep this file minimal and update iteratively.
+Keep this file minimal and update iteratively when project conventions change.
